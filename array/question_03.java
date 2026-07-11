@@ -16,7 +16,7 @@ public class question_03 {
            j--;
           }
           i++;
-        
+         
         }
         for(int ele : arr){
             System.out.print(ele + " ");
