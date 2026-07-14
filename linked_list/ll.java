@@ -11,12 +11,67 @@ public class ll {
         this.size = 0;
     }
 
-    void insertHead(int value){
+    void insertAtHead(int value){
         Node temp = new Node(value);
         temp.next = head;
         head = temp;
         if(head == null) head = tail = temp;
         size++;
+    }
+
+    void insertAtTail(int value){
+        Node temp = new Node(value);
+        if(head==null) head = tail = temp;
+        else
+        tail.next = temp;
+        tail = temp;
+       
+        size++;
+    }
+
+    void insertAtIndex(int value , int index){
+        if(index==0){
+            insertAtHead(value);
+            return;
+        }
+
+        if(index== size){
+            insertAtTail(value);
+            return;
+        }
+       Node temp = head;
+      for(int i = 1; i<index;i++){
+        temp = temp.next;
+      }
+      Node t  = new Node(value);
+      t.next  = temp.next;
+      temp.next = t;
+      size++;
+
+    }
+
+    void deleteAtHead(int index){
+        Node temp = head;
+        temp = head.next;
+        head = temp;
+        size--;
+    }
+
+    void deleteAtIndex(int index){
+        if(index<0 || index>=size){
+            System.out.println("invalid index");
+            return;
+        }
+        Node temp = head;
+        if(index==0) deleteAtHead(index);
+        else{
+            for(int i = 0;i<index;i++){
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
+            if(index==size-1) tail = temp;
+        }
+        size--;
     }
 
     void display(){
@@ -42,11 +97,22 @@ public class ll {
     }
     public static void main(String[] args) {
         ll list = new ll();
-        list.insertHead(23);
-        list.insertHead(22);
-        list.insertHead(45);
-        list.insertHead(21);
+        list.insertAtTail(23);
+        list.insertAtTail(22);
+        list.insertAtTail(45);
+        list.insertAtTail(21);
+        list.display();
+
+        list.insertAtHead(200);
+        list.display();
+
+        list.insertAtIndex(300,3);
+        list.display();
+
+        list.deleteAtHead(0);
+        list.display();
+
+        list.deleteAtIndex(4);
         list.display();
     }
 }
-27:44
