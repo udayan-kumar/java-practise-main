@@ -57,15 +57,7 @@ public class singly_ll {
         size--;
     }
 
-    // void deleteAtTail(int index){
-    //     Node temp = head;
-    //     for(int i = 0; i<index;i++){
-    //         temp = temp.next;
-    //     }
-    //     tail = temp;
-    //     tail.next = null;
-    //     size--;
-    // }
+   
 
     void deleteAtIndex(int index){
         if(index<0 || index>=size){
