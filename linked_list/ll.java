@@ -57,6 +57,16 @@ public class ll {
         size--;
     }
 
+    // void deleteAtTail(int index){
+    //     Node temp = head;
+    //     for(int i = 0; i<index;i++){
+    //         temp = temp.next;
+    //     }
+    //     tail = temp;
+    //     tail.next = null;
+    //     size--;
+    // }
+
     void deleteAtIndex(int index){
         if(index<0 || index>=size){
             System.out.println("invalid index");
@@ -65,13 +75,32 @@ public class ll {
         Node temp = head;
         if(index==0) deleteAtHead(index);
         else{
-            for(int i = 0;i<index;i++){
+            for(int i = 0;i<index-1;i++){
                 temp = temp.next;
             }
             temp.next = temp.next.next;
-            if(index==size-1) tail = temp;
+            if(index==size-1) tail=temp;
         }
         size--;
+    }
+
+    int get(int index){
+        Node temp = head;
+        for(int i = 0; i<index;i++){
+            temp = temp.next;
+        }
+        return temp.value;
+    }
+
+    int search(int value){
+        Node temp = head;
+        while(temp!=null){
+          if(temp.value == value){
+            return temp.value;
+          }
+          temp = temp.next;
+        }
+      return -1;
     }
 
     void display(){
@@ -114,5 +143,12 @@ public class ll {
 
         list.deleteAtIndex(4);
         list.display();
+
+        System.out.println(list.get(3));
+
+        System.out.println(list.search(300));
+
+        System.out.println(list.size);
+
     }
 }
