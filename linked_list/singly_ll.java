@@ -145,6 +145,26 @@ public class singly_ll {
         return false;
     }
 
+    int cyclic_length(Node head){
+        Node slow = head;
+        Node fast = head;
+
+        while(fast!=null && fast.next!=null){
+            slow  = slow.next;
+            fast = fast.next.next;
+            if(fast==slow){
+                Node temp = slow;
+                int length = 0;
+                do{
+                    temp = temp.next;
+                    length++;
+                }while(temp!=slow);
+                return length;
+            }
+        }
+        return 0;
+    }
+
     void display(){
         Node temp = head;
         while(temp!=null){
@@ -218,11 +238,6 @@ public class singly_ll {
 
         list2.head = list2.merge(list2.head, list3.head);
         // list2.display();
-
-
-       System.out.println(list3.cyclic(list3.head));
-        
-
 
 
     }
