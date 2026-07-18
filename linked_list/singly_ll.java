@@ -133,6 +133,18 @@ public class singly_ll {
         return dummy.next;
     }
 
+    boolean cyclic(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+             if(slow==fast) return true;
+        }
+       
+        return false;
+    }
+
     void display(){
         Node temp = head;
         while(temp!=null){
@@ -201,11 +213,14 @@ public class singly_ll {
         list3.insertAtTail(1);
         list3.insertAtTail(2);
         list3.insertAtTail(9);
-        list3.insertAtTail(14);
+        
+        // list3.insertAtTail(14);
 
         list2.head = list2.merge(list2.head, list3.head);
-        list2.display();
+        // list2.display();
 
+
+       System.out.println(list3.cyclic(list3.head));
         
 
 
