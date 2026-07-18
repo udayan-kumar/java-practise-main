@@ -95,6 +95,44 @@ public class singly_ll {
       return -1;
     }
 
+    Node remove_dublicate(Node head){
+        Node temp = head;
+        while(temp.next!=null){
+            if(temp.value==temp.next.value){
+            temp.next = temp.next.next;
+            
+            }
+            else{
+                temp = temp.next;
+            }
+        }
+        tail = temp;
+        tail.next = null;
+        return head;
+       
+    }
+
+    Node merge (Node head1 , Node head2){
+        Node dummy = new Node(-1);
+        Node i = head1;
+        Node j = head2;
+        Node k= dummy;
+        while(i!=null && j!=null){
+            if(i.value<j.value){
+                k.next = i;
+                i = i.next;
+            }
+            else {
+                k.next = j;
+                j = j.next;
+            }
+            k = k.next;
+        }
+        if(i==null) k.next = j;
+        else k.next = i;
+        return dummy.next;
+    }
+
     void display(){
         Node temp = head;
         while(temp!=null){
@@ -117,30 +155,60 @@ public class singly_ll {
         }
     }
     public static void main(String[] args) {
-        singly_ll list = new singly_ll();
-        list.insertAtTail(23);
-        list.insertAtTail(22);
-        list.insertAtTail(45);
-        list.insertAtTail(21);
-        list.display();
+        // singly_ll list = new singly_ll();
+        // list.insertAtTail(23);
+        // list.insertAtTail(22);
+        // list.insertAtTail(45);
+        // list.insertAtTail(21);
+        // list.display();
 
-        list.insertAtHead(200);
-        list.display();
+        // list.insertAtHead(200);
+        // list.display();
 
-        list.insertAtIndex(300,3);
-        list.display();
+        // list.insertAtIndex(300,3);
+        // list.display();
 
-        list.deleteAtHead(0);
-        list.display();
+        // list.deleteAtHead(0);
+        // list.display();
 
-        list.deleteAtIndex(4);
-        list.display();
+        // list.deleteAtIndex(4);
+        // list.display();
 
-        System.out.println(list.get(3));
+        // System.out.println(list.get(3));
 
-        System.out.println(list.search(300));
+        // System.out.println(list.search(300));
 
-        System.out.println(list.size);
+        // System.out.println(list.size);
+
+        // singly_ll list1 = new singly_ll();
+        // list1.insertAtTail(1);
+        // list1.insertAtTail(1);
+        // list1.insertAtTail(2);
+        // list1.insertAtTail(3);
+        // list1.insertAtTail(3);
+        // list1.display();
+
+        // list1.remove_dublicate(list1.head);
+        // list1.display();
+
+        singly_ll list2 = new singly_ll();
+        list2.insertAtTail(1);
+        list2.insertAtTail(3);
+        list2.insertAtTail(5);
+        
+       
+        singly_ll list3 = new singly_ll();
+        list3.insertAtTail(1);
+        list3.insertAtTail(2);
+        list3.insertAtTail(9);
+        list3.insertAtTail(14);
+
+        list2.head = list2.merge(list2.head, list3.head);
+        list2.display();
+
+        
+
+
 
     }
 }
