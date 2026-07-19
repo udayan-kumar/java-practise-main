@@ -188,6 +188,16 @@ public class singly_ll {
         return ans;
     }
 
+    int middle(Node head){
+        Node slow = head;
+        Node fast = head;
+        while( fast != null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.value;
+    }
+
     void display(){
         Node temp = head;
         while(temp!=null){
@@ -261,6 +271,8 @@ public class singly_ll {
 
         list2.head = list2.merge(list2.head, list3.head);
         // list2.display();
+
+        System.out.println(list2.middle(list2.head));
 
 
     }
